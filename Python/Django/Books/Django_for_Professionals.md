@@ -17,7 +17,7 @@ The comparison operator ***~=*** ensures that subsequent security updates for Dj
 
 *(Page 21)*
 
-## Docker image, Dockerfile (vs. docker-compose), docker security
+## Docker
 **Docker image** is a read-only template that describes how to create a Docker *container*. The image is the instructions while the container is the actual running instance of an image. (Analogy: an image is the blueprint or set of plans for building an apartment; the container is the actual, fully-built building.)
 
 **Dockerfile** defines the steps to create and run my custom image (contains Python, also installs my code and has additional configuration details).
@@ -31,12 +31,19 @@ Whenever I build a new Dockerfile, Docker will automatically check if it can use
 
 **docker-compose.yml** is list of instructions I need to run the container.
 
-*(Page 27-32)*
+If the container runs in the detached mode (`-d`) I can use other commands in the same terminal:
+- `docker-compose logs` to see the current output and debug any issues
+- `docker-compose exec [service]` to for example create a superuser, migrate, etc.
 
-## Page 39 - Order of Dockerfile
+*(Page 27-32, 39-40)*
 
-## Page 40 - docker-compose logs, docker-compose exec [service] ...
+## Adding new package to Docker (such as database adapter for Python)
+**Psycopg2** - there are actually two versions of this package available: `pyscopg2` and `pyscopg2-binary`. The binary version is simpler to use and works just fine for most websites. Using the non-binary version requires multiple additional steps of configuration and is only relevant to truly massive websites.
 
-## Page 43 - Add new package to container
+There are two options adding new package:
+- Install `pyscopg2-binary` locally and then `pip freeze` my virtual environment to update `requirements.txt` (makes sense when I work locally),
+- Since I use docker I can just add `pyscopg2-binary==2.9.3` to `requirements.txt` and updated it.
+
+*(Page 43)*
 
 ## Page - Custom User Model
