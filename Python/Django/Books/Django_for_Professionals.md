@@ -6,10 +6,10 @@
 
 ***Containers*** isolate the entire operating system, not just the Python parts. That means I can install Python itself within Docker as well as install and run a production-level database.
 
-*(Page 17*)
+*(Page 17)*
 
 ## Install command, ~= operator
-To install the latest version of Django I should use the commant `python -m pip install django~=4.0.0`.
+To install the latest version of Django I should use the command `python -m pip install django~=4.0.0`.
 
 The comparison operator ***~=*** ensures that subsequent security updates for Django, such as *4.0.1*, *4.0.2*, and so on are automatically installed.
 
@@ -47,3 +47,16 @@ There are two options adding new package:
 *(Page 43)*
 
 ## Page - Custom User Model
+The official Django documentation **highly recommends** use a [custom user model](https://docs.djangoproject.com/en/4.2/topics/auth/customizing/#using-a-custom-user-model-when-starting-a-project).
+
+There implementation choices:
+- extend `AbstractUser` - keeps the default `User` fields and permissions,
+- extend `AbstractBaseUser` - more granular and flexible, but require more work.
+
+### Abstract User
+1. Create a `CustomUser` model
+2. Update `settings.py`
+3. Customize `UserCreationForm` and `UserChangeForm`
+4. Add the custom user model to `admin.py`
+
+*(Page 56)*
