@@ -38,11 +38,13 @@ If the container runs in the detached mode (`-d`) I can use other commands in th
 *(Page 27-32, 39-40)*
 
 ## Adding new package to Docker (such as database adapter for Python)
-**Psycopg2** - there are actually two versions of this package available: `pyscopg2` and `pyscopg2-binary`. The binary version is simpler to use and works just fine for most websites. Using the non-binary version requires multiple additional steps of configuration and is only relevant to truly massive websites.
+**Psycopg2** has two versions of package:
+- `pyscopg2-binary` - simpler to use and works just fine for most websites
+- `pyscopg2` - requires multiple additional steps of configuration and is only relevant to truly massive websites
 
-There are two options adding new package:
-- Install `pyscopg2-binary` locally and then `pip freeze` my virtual environment to update `requirements.txt` (makes sense when I work locally),
-- Since I use docker I can just add `pyscopg2-binary==2.9.3` to `requirements.txt` and updated it with `docker-compose down` + `docker-compose up [-d] --build`.
+Two options how to add package:
+- **Locally** - with `pip install pyscopg2-binary`, then `pip freeze` to update `requirements.txt`
+- **Docker** - add `pyscopg2-binary==2.9.3` to `requirements.txt` and updated it with `docker-compose down` + `docker-compose up [-d] --build`
 
 *(Page 43)*
 
