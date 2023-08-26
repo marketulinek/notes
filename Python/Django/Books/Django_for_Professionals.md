@@ -42,7 +42,7 @@ If the container runs in the detached mode (`-d`) I can use other commands in th
 
 There are two options adding new package:
 - Install `pyscopg2-binary` locally and then `pip freeze` my virtual environment to update `requirements.txt` (makes sense when I work locally),
-- Since I use docker I can just add `pyscopg2-binary==2.9.3` to `requirements.txt` and updated it.
+- Since I use docker I can just add `pyscopg2-binary==2.9.3` to `requirements.txt` and updated it with `docker-compose down` + `docker-compose up [-d] --build`.
 
 *(Page 43)*
 
