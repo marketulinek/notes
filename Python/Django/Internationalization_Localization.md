@@ -10,8 +10,12 @@ MIDDLEWARE = [
     ...
 ]
 
+# Update it to a generic name, English (en)
+LANGUAGE_CODE = 'en'
+
 # Numbers and dates using the format of the current locale
 USE_L10N = True
+
 # Datetimes will be timezone-aware
 USE_TZ = True
 
@@ -23,12 +27,10 @@ LANGUAGES = [
     ['cs', 'Čeština']
 ]
 ```
-Language prefix in URL patterns:
-https://docs.djangoproject.com/en/4.2/topics/i18n/translation/#module-django.conf.urls.i18n
+Language prefix in URL patterns in `<project_name>/urls.py`
+([documentation](https://docs.djangoproject.com/en/4.2/topics/i18n/translation/#module-django.conf.urls.i18n))
 
 ```
-# Example of <project_name>/urls.py
-
 from django.conf.urls.i18n import i18n_patterns
 from django.contrib import admin
 from django.urls import path, include
