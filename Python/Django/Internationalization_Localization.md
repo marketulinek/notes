@@ -43,7 +43,6 @@ urlpatterns += i18n_patterns(
     path('admin/', admin.site.urls),
     path('', include('pages.urls')),
 )
-
 ```
 
 ## Usage :magic_wand:
@@ -107,3 +106,26 @@ and in template
 ## Lazy translation
 https://docs.djangoproject.com/en/4.2/topics/i18n/translation/#lazy-translation
 
+## Miscellaneous
+### The set_language redirect view
+Activate by adding `path("i18n/", include("django.conf.urls.i18n"))` to URLconf in `<project_name>/urls.py`.
+
+:warning: **Warning:** don’t include the above URL within **i18n_patterns()** - it needs to be language-independent itself to work correctly.
+```
+{% load i18n %}
+
+<form action="{% url 'set_language' %}" method="post">{% csrf_token %}
+    <input name="next" type="hidden" value="{{ redirect_to }}">
+    <select name="language">
+        {% get_current_language as LANGUAGE_CODE %}
+        {% get_available_languages as LANGUAGES %}
+        {% get_language_info_list for LANGUAGES as languages %}
+        {% for language in languages %}
+            <option value="{{ language.code }}"{% if language.code == LANGUAGE_CODE %} selected{% endif %}>
+                {{ language.name_local }} ({{ language.code }})
+            </option>
+        {% endfor %}
+    </select>
+    <input type="submit" value="Go">
+</form>
+```
