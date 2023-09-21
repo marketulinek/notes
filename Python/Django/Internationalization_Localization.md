@@ -68,12 +68,12 @@ even those templates that extend from other templates which have already loaded 
 ## Message files :scroll:
 ### Creating
 ```
-django-admin makemessages -l cs
+django-admin makemessages [--ignore=venv / -i "venv"] -l cs
 ```
 …where `cs` is the locale name for the message file I want to create.
 ### Compiling
 ```
-django-admin compilemessages
+django-admin compilemessages [-i "venv"]
 ```
 ## Comments for translators :speech_balloon:
 ```
