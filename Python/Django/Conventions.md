@@ -1,3 +1,16 @@
+# Import order
+
+*Source:* Two Scoops of Django book
+
+- Standard library imports
+
+- Imports from core Django
+
+- Imports from third-party apps including those unrelated to Django
+
+- Imports from the apps that I created as part of my Django project
+
+
 # Model style
 
 https://docs.djangoproject.com/en/dev/internals/contributing/writing-code/coding-style/#model-style
